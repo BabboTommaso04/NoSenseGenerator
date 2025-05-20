@@ -1,16 +1,14 @@
 package com.nonsense.generator;
-
 import com.google.cloud.language.v1.*;
 import com.google.cloud.language.v1.Document.Type;
-import com.google.protobuf.ListValue;
-
+import com.google.protobuf.ListValue;   
 import java.io.IOException;
 import java.util.*;
 
 public class SentenceAnalyzer { 
     com.google.cloud.language.v1.LanguageServiceClient language;
 
-    public App() throws IOException {
+    public SentenceAnalyzer() throws IOException {
         this.language = com.google.cloud.language.v1.LanguageServiceClient.create(); // creazione del ServiceClient nel try, fa l'autenticazione con le variabili di ambiente estratte dal json
     }
 
@@ -25,6 +23,7 @@ public class SentenceAnalyzer {
     public String syntaxAnalyzer(String inputString, boolean showSyntaxTree, Dictionary dictionary) {
         List<Token> tokens =  this.APIHandler(inputString);
 
+
         // Costruisci una mappa head → [dipendenti]
         Map<Integer, List<Integer>> tree = new HashMap<>();
         int rootIndex = -1;
@@ -32,7 +31,7 @@ public class SentenceAnalyzer {
         for (int i = 0; i < tokens.size(); i++) {
             int head = tokens.get(i).getDependencyEdge().getHeadTokenIndex();
             
-            dictionary.add(Word(tokens.get(i).getPartOfSpeech().getTag(), tokens.get(i).getText().getContent(), tokens.get(i).getPartOfSpeech().getNumber(), head)); // aggiunta al dizionario
+            dictionary.add(new Word(tokens.get(i).getPartOfSpeech().getTag().name(), tokens.get(i).getText().getContent().toLowerCase(), tokens.get(i).getPartOfSpeech().getNumber().name(), head)); // aggiunta al dizionario
 
             if (head == i) {
                 rootIndex = i; // è la radice (ROOT)

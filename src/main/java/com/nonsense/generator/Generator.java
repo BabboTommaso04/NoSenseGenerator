@@ -1,3 +1,4 @@
+package com.nonsense.generator;
 import java.util.List;
 
 public class Generator {
@@ -48,14 +49,14 @@ public class Generator {
                 generatedSentence.append(token).append(" ");
             }
         }
-
+        dictionary.saveToFile("src/main/resources/dictionary.json"); // Save the dictionary to a file after generation
         dictionary.clearTemporaryWords(); // Clear temporary words after generation
 
-        
+        /*
         if(!inputUsed){
             generatedSentence.append("[NO INPUT USED]");
         }
-
+        */
         return generatedSentence.toString().trim(); // Trim to remove the last space
     }
 }

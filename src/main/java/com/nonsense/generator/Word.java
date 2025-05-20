@@ -1,3 +1,4 @@
+package com.nonsense.generator;
 import java.util.Objects;
 
 public class Word {

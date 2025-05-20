@@ -1,3 +1,4 @@
+package com.nonsense.generator;
 import java.util.*;
 import java.io.*;
 import com.google.gson.Gson;
@@ -41,6 +42,7 @@ public class Dictionary {
             default:
                 break;
         }
+        
         temporaryWords.add(word); // Temporary set of words from the current input sentence
     }
 

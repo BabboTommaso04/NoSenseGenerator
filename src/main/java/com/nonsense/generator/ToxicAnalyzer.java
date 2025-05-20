@@ -1,3 +1,4 @@
+package com.nonsense.generator;
 import com.google.cloud.language.v1.*;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.Document.*;
