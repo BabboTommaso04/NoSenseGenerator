@@ -4,9 +4,9 @@
 
 | Acceptance Criteria name | Choose Initial Configuration         |
 |--------------------------|--------------------------------------|
-| Attori                   | Player                               |
-| Descrizione              | The player can select one of four initial configurations to start playing. |
-| Precondizioni            | -                                    |
+| Actor                   | User                               |
+| Description              | The user must recive a random generated sentence after writing something in input and clicking the "generate" button|
+| Preconditions            | -                                    |
 | Scenario Principale      | The program sets up the initial arrangement of pieces based on the configuration chosen by the player. |
 | Scenario Alternativo     | The game can start or continue with the current configuration. |
 | Post-Condizioni          | Reset the move counter and the game. |
