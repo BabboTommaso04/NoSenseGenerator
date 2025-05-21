@@ -5,8 +5,7 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>NoSenseGenerator</name>
-	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
+  <url>https://github.com/BabboTommaso04/NoSenseGenerator</url>
 
     <build>
         <plugins>
