@@ -2,7 +2,7 @@
 
 ## Acceptance criteria 1
 
-| Basic functionality      |                          |
+| Acceptance criteria name  |          Basic functionality                |
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | The system generates a new phrase based on user input. |
