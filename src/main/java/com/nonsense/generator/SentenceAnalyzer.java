@@ -26,23 +26,32 @@ public class SentenceAnalyzer {
 
         // Costruisci una mappa head → [dipendenti]
         Map<Integer, List<Integer>> tree = new HashMap<>();
-        int rootIndex = -1;
+        Vector<Integer> rootIndex = new Vector<>();
+        int j = 0;
+        rootIndex.add(-1);
 
         for (int i = 0; i < tokens.size(); i++) {
             int head = tokens.get(i).getDependencyEdge().getHeadTokenIndex();
             
-            dictionary.add(new Word(tokens.get(i).getPartOfSpeech().getTag().name(), tokens.get(i).getText().getContent().toLowerCase(), tokens.get(i).getPartOfSpeech().getNumber().name(), head)); // aggiunta al dizionario
+            if((tokens.get(i).getPartOfSpeech().getTag().name().equals("VERB") && tokens.get(i).getPartOfSpeech().getPerson().name().equals("THIRD")) || tokens.get(i).getPartOfSpeech().getTag().name().equals("NOUN") || tokens.get(i).getPartOfSpeech().getTag().name().equals("ADJ")) {
+                dictionary.add(new Word(tokens.get(i).getPartOfSpeech().getTag().name(), tokens.get(i).getText().getContent().toLowerCase(), tokens.get(i).getPartOfSpeech().getNumber().name(), head)); // aggiunta al dizionario
+            }
 
             if (head == i) {
-                rootIndex = i; // è la radice (ROOT)
+                rootIndex.set(j, i); // è la radice (ROOT)
+                j++;
+                rootIndex.add(-1);
             }
             tree.computeIfAbsent(head, k -> new ArrayList<>()).add(i);
         }
 
+        String trees = "";
         if(showSyntaxTree) { // creazione dell'albero se richiesto dall'utente
-            return buildTreeString(tokens, tree, rootIndex, "", true);
+            for(int i = 0; i < j; i++) {
+                trees += "\n" + buildTreeString(tokens, tree, rootIndex.get(i), "", true);
+            } 
         }
-        return "";
+        return trees;
     }
 
     private String buildTreeString(List<Token> tokens, Map<Integer, List<Integer>> tree, int index, String prefix, boolean isLast) {
