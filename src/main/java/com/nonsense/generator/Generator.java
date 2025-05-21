@@ -1,5 +1,7 @@
 package com.nonsense.generator;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Generator {
     private final List<String[]> templates = List.of(
@@ -52,11 +54,15 @@ public class Generator {
         dictionary.saveToFile("src/main/resources/dictionary.json"); // Save the dictionary to a file after generation
         dictionary.clearTemporaryWords(); // Clear temporary words after generation
 
-        /*
-        if(!inputUsed){
-            generatedSentence.append("[NO INPUT USED]");
+        try {
+            // True to append to the file and not to overwrite
+            FileWriter writer = new FileWriter("src/main/resources/generated_sentences.txt", true);
+            writer.write(generatedSentence.toString().trim() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
         }
-        */
+
         return generatedSentence.toString().trim(); // Trim to remove the last space
     }
 }
