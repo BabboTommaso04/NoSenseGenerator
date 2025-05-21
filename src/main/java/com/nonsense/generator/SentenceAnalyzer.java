@@ -48,7 +48,7 @@ public class SentenceAnalyzer {
         String trees = "";
         if(showSyntaxTree) { // creazione dell'albero se richiesto dall'utente
             for(int i = 0; i < j; i++) {
-                trees += "\n" + buildTreeString(tokens, tree, rootIndex.get(i), "", true);
+                trees += buildTreeString(tokens, tree, rootIndex.get(i), "", true);
             } 
         }
         return trees;
