@@ -66,7 +66,7 @@
               <artifactId>exec-maven-plugin</artifactId>
               <version>3.5.0</version>
               <configuration>
-                <mainClass>/com.nonsense.generator.Main</mainClass>
+                <!-- <mainClass>/com.nonsense.generator.Main</mainClass> -->
                 <arguments>
                   <argument>argument1</argument>
                 </arguments>
@@ -78,16 +78,15 @@
   
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
-				<version>5.11.0</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+          <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>5.12.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+          </dependency>
 
 		</dependencies>
-
 	</dependencyManagement>
 
     <dependencies>
@@ -98,18 +97,12 @@
             <version>2.36.0</version>
         </dependency>
 
-<!--        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
--->
         <dependency>
 		  <groupId>org.junit.jupiter</groupId>
 		  <artifactId>junit-jupiter-api</artifactId>
 		  <scope>test</scope>
 		</dependency>
+
 		<!-- Optionally: parameterized tests support -->
 		<dependency>
 		  <groupId>org.junit.jupiter</groupId>
