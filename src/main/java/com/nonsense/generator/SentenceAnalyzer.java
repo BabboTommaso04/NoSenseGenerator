@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.*;
 
 public class SentenceAnalyzer { 
-    com.google.cloud.language.v1.LanguageServiceClient language;
+    private com.google.cloud.language.v1.LanguageServiceClient language;
 
     public SentenceAnalyzer() throws IOException {
-        this.language = com.google.cloud.language.v1.LanguageServiceClient.create(); // creazione del ServiceClient nel try, fa l'autenticazione con le variabili di ambiente estratte dal json
+        this.language = com.google.cloud.language.v1.LanguageServiceClient.create(); // creation of the ServiceClient, doesa the autentication with the eniroment variables from the json
     }
 
     private List<Token> APIHandler(String inputString) {
@@ -24,21 +24,21 @@ public class SentenceAnalyzer {
         List<Token> tokens =  this.APIHandler(inputString);
 
 
-        // Costruisci una mappa head → [dipendenti]
+        // Map headIndex → [pointingTokensList]
         Map<Integer, List<Integer>> tree = new HashMap<>();
-        Vector<Integer> rootIndex = new Vector<>();
+        Vector<Integer> rootIndex = new Vector<>(); // vector of rootIndexes in case there are more than one phrase separated by a period
         int j = 0;
         rootIndex.add(-1);
 
         for (int i = 0; i < tokens.size(); i++) {
             int head = tokens.get(i).getDependencyEdge().getHeadTokenIndex();
-            
-            if((tokens.get(i).getPartOfSpeech().getTag().name().equals("VERB") && tokens.get(i).getPartOfSpeech().getPerson().name().equals("THIRD")) || tokens.get(i).getPartOfSpeech().getTag().name().equals("NOUN") || tokens.get(i).getPartOfSpeech().getTag().name().equals("ADJ")) {
+            // add() is only for: nouns adjectives and verbs in the third pearson(both singular and plural)
+            if((tokens.get(i).getPartOfSpeech().getTag().name().equals("VERB") && tokens.get(i).getPartOfSpeech().getPerson().name().equals("THIRD")) || tokens.get(i).getPartOfSpeech().getTag().name().equals("NOUN") || tokens.get(i).getPartOfSpeech().getTag().name().equals("ADJ")) { 
                 dictionary.add(new Word(tokens.get(i).getPartOfSpeech().getTag().name(), tokens.get(i).getText().getContent().toLowerCase(), tokens.get(i).getPartOfSpeech().getNumber().name(), head)); // aggiunta al dizionario
             }
 
             if (head == i) {
-                rootIndex.set(j, i); // è la radice (ROOT)
+                rootIndex.set(j, i); // rootIndex
                 j++;
                 rootIndex.add(-1);
             }
@@ -46,15 +46,15 @@ public class SentenceAnalyzer {
         }
 
         String trees = "";
-        if(showSyntaxTree) { // creazione dell'albero se richiesto dall'utente
-            for(int i = 0; i < j; i++) {
+        if(showSyntaxTree) { // check on showSytaxTree
+            for(int i = 0; i < j; i++) { //bulid one for each one of the rootIndexes found
                 trees += buildTreeString(tokens, tree, rootIndex.get(i), "", true);
             } 
         }
         return trees;
     }
 
-    private String buildTreeString(List<Token> tokens, Map<Integer, List<Integer>> tree, int index, String prefix, boolean isLast) {
+    private String buildTreeString(List<Token> tokens, Map<Integer, List<Integer>> tree, int index, String prefix, boolean isLast) { // writing of the syntax tree
         Token token = tokens.get(index);
         StringBuilder sb = new StringBuilder();
 
