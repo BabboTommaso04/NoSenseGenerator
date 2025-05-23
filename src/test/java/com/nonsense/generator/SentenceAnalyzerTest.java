@@ -123,7 +123,7 @@ public class SentenceAnalyzerTest {
         assertTrue(
             result.contains("play (ROOT)") && 
             result.contains("They (NSUBJ)") && 
-            result.contains("outside (ADV)") && 
+            result.contains("outside (ADVMOD)") && 
             result.contains(". (P)")
         );
         assertFalse(dictionary.takeWord("NOUN", "SINGULAR") == null && 
