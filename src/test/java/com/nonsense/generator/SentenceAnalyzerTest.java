@@ -1,4 +1,4 @@
-/*package com.nonsense.generator;
+package com.nonsense.generator;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,10 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SentenceAnalyzerTest {
     private SentenceAnalyzer analyzer;
 
+    /*
     @BeforeAll
     static void setUpCredentials() {
         System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", "/home/teo/nonsensegenerator-459922-b633dd6c0b8d.json");
     }
+    */
 
     @BeforeEach
     public void setUp() throws IOException {
@@ -45,16 +47,16 @@ public class SentenceAnalyzerTest {
         assertNotNull(result);
         assertTrue(result.equals(expectedTree));
         assertTrue(
-            tree.contains("jumps (ROOT)") && 
-            tree.contains("fox (NSUBJ)") && 
-            tree.contains("The (DET)") &&
-            tree.contains("quick (AMOD)") &&
-            tree.contains("brown (AMOD)") &&
-            tree.contains("over (PREP)") &&
-            tree.contains("dog (POBJ)") &&
-            tree.contains("the (DET)") &&
-            tree.contains("lazy (AMOD)") &&
-            tree.contains(". (P)")
+            result.contains("jumps (ROOT)") && 
+            result.contains("fox (NSUBJ)") && 
+            result.contains("The (DET)") &&
+            result.contains("quick (AMOD)") &&
+            result.contains("brown (AMOD)") &&
+            result.contains("over (PREP)") &&
+            result.contains("dog (POBJ)") &&
+            result.contains("the (DET)") &&
+            result.contains("lazy (AMOD)") &&
+            result.contains(". (P)")
         );
         assertFalse(
             dictionary.takeWord("NOUN", "SINGULAR") == null &&
@@ -120,16 +122,16 @@ public class SentenceAnalyzerTest {
         assertNotNull(result);
         assertTrue(result.equals(expectedTree));
         assertTrue(
-            tree.contains("sleeps (ROOT)") && 
-            tree.contains("cat (NSUBJ)") && 
-            tree.contains("The (DET)") && 
-            tree.contains(". (P)")
+            result.contains("sleeps (ROOT)") && 
+            result.contains("cat (NSUBJ)") && 
+            result.contains("The (DET)") && 
+            result.contains(". (P)")
         );
         assertTrue(
-            tree.contains("play (ROOT)") && 
-            tree.contains("They (NSUBJ)") && 
-            tree.contains("outside (ADV)") && 
-            tree.contains(". (P)")
+            result.contains("play (ROOT)") && 
+            result.contains("They (NSUBJ)") && 
+            result.contains("outside (ADV)") && 
+            result.contains(". (P)")
         );
         assertFalse(dictionary.takeWord("NOUN", "SINGULAR") == null && 
             dictionary.takeWord("NOUN", "PLURAL") == null && 
@@ -138,4 +140,4 @@ public class SentenceAnalyzerTest {
             dictionary.takeWord("ADJ", "SINGULAR") == null
         );
     }
-}*/
+}
