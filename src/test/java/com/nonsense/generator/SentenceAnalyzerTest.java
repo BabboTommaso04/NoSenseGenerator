@@ -12,13 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SentenceAnalyzerTest {
     private SentenceAnalyzer analyzer;
 
-    /*
-    @BeforeAll
-    static void setUpCredentials() {
-        System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", "/home/teo/nonsensegenerator-459922-b633dd6c0b8d.json");
-    }
-    */
-
     @BeforeEach
     public void setUp() throws IOException {
         analyzer = new SentenceAnalyzer();
@@ -33,15 +26,15 @@ public class SentenceAnalyzerTest {
 
         String expectedTree = """
         jumps (ROOT)
-        ├── fox (NSUBJ)
-        │   ├── The (DET)
-        │   ├── quick (AMOD)
-        │   └── brown (AMOD)
-        ├── over (PREP)
-        │   └── dog (POBJ)
-        │       ├── the (DET)
-        │       └── lazy (AMOD)
-        └── . (P)
+            ├── fox (NSUBJ)
+            │   ├── The (DET)
+            │   ├── quick (AMOD)
+            │   └── brown (AMOD)
+            ├── over (PREP)
+            │   └── dog (POBJ)
+            │       ├── the (DET)
+            │       └── lazy (AMOD)
+            └── . (P)
         """;
 
         assertNotNull(result);
@@ -110,13 +103,13 @@ public class SentenceAnalyzerTest {
 
         String expectedTree = """
         sleeps (ROOT)
-        ├── cat (NSUBJ)
-        │   └── The (DET)
-        └── . (P)
+            ├── cat (NSUBJ)
+            │   └── The (DET)
+            └── . (P)
         play (ROOT)
-        ├── They (NSUBJ)
-        ├── outside (ADV)
-        └── . (P)
+            ├── They (NSUBJ)
+            ├── outside (ADVMOD)
+            └── . (P)
         """;
 
         assertNotNull(result);
