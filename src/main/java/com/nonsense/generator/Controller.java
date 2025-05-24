@@ -15,26 +15,27 @@ public class Controller {
         this.sentenceAnalyzer = new SentenceAnalyzer();
         this.toxicAnalyzer = new ToxicAnalyzer();
         
-        // Caricamento dizionario predefinito
+        // Load the dictionary from the file
         dictionary.loadFromFile("src/main/resources/dictionary.json");
     }
 
     public String processInput(String inputText, int templateIndex, boolean showTree) throws Exception {
-        // Validazione input
+        // Input validation
         if(inputText == null || inputText.trim().isEmpty()) {
             throw new IllegalArgumentException("Il testo inserito non può essere vuoto");
         }
         
-        // Analisi sintattica
+        // Syntax analysis
         String treeOutput = sentenceAnalyzer.syntaxAnalyzer(inputText, showTree, dictionary);
         
-        // Generazione frase
+        // Phrase generation
         String generatedSentence = generator.generate(templateIndex, dictionary);
+        this.dictionary.saveToFile("src/main/resources/dictionary.json"); // Saves the dictionary after sentence generation
         
-        // Controllo tossicità
+        // Toxicity check
         float toxicityScore = toxicAnalyzer.getCategoryConfidence(inputText, 0);
         
-        // Preparazione output
+        // Output preparation
         StringBuilder result = new StringBuilder();
     
         if(showTree) {

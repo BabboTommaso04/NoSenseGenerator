@@ -68,7 +68,7 @@ public class GUI extends JFrame {
         checkboxPanel.add(syntaxTreeCheckbox);
         
         JPanel dropdownPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        String[] templates = {"Random", "The NOUN VERB in the park" , "NOUN VERB quickly" , "The NOUN watches the NOUN", "NOUN and NOUN VERB together", "A NOUN VERB above the NOUN"};
+        String[] templates = {"Random", "The NOUN VERB the NOUN in the ADJ empty house" , "At noon, the ADJ NOUN VERB and the NOUN VERB together" , "Before sunset, a NOUN VERB the ADJ NOUN VERB nearby", "The NOUN VERB a ADJ NOUN as NOUN VERB", "While the ADJ NOUN VERB, NOUN VERB in the background"};
         templateDropdown = new JComboBox<>(templates);
         dropdownPanel.add(new JLabel("Template:"));
         dropdownPanel.add(templateDropdown);

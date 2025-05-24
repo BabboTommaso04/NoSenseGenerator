@@ -76,8 +76,8 @@ public class DictionaryTest {
         original.add(new Word("VERB", "compute", "PLURAL", 2));
         original.add(new Word("ADJ", "smart", "SINGULAR", 3));
 
-        String path = "test_dictionary.json";
-        original.saveToFile(path);
+        String path = "src/test/java/com/nonsense/generator/test_dictionary.json";
+        original.saveToFile(path);  
 
         Dictionary loaded = new Dictionary();
         loaded.loadFromFile(path);

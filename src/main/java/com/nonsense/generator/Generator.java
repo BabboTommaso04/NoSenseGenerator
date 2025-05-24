@@ -4,17 +4,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Generator {
+    private final String outputPath;
+
+    // List of templates for sentence generation
     private final List<String[]> templates = List.of(
-        new String[]{"The", ":NOUN:SINGULAR", ":VERB:SINGULAR", "in", "the", "park."},
-        new String[]{":NOUN:PLURAL", ":VERB:PLURAL", "quickly."},
-        new String[]{"The", ":NOUN:SINGULAR", "watches", "the", ":NOUN:PLURAL"},
-        new String[]{":NOUN:SINGULAR", "and", ":NOUN:SINGULAR", ":VERB:PLURAL", "together."},
-        new String[]{"A", ":NOUN:SINGULAR", ":VERB:SINGULAR", "above", "the", ":NOUN:PLURAL"}
+        new String[]{"The", ":NOUN:SINGULAR", ":VERB:SINGULAR", "the", ":NOUN:SINGULAR", "in", "the", ":ADJ:SINGULAR", "empty", "house."},
+        new String[]{"At", "noon,", "the", ":ADJ:SINGULAR", ":NOUN:SINGULAR", ":VERB:SINGULAR", "and", "the", ":NOUN:PLURAL", ":VERB:PLURAL", "together."},
+        new String[]{"Before", "sunset,", "a", ":NOUN:SINGULAR", ":VERB:SINGULAR", "the", ":ADJ:SINGULAR", ":NOUN:PLURAL", ":VERB:PLURAL", "nearby."},
+        new String[]{"The", ":NOUN:SINGULAR", ":VERB:SINGULAR", "a", ":ADJ:SINGULAR", ":NOUN:SINGULAR", "as", ":NOUN:PLURAL", ":VERB:PLURAL", "."},
+        new String[]{"While", "the", ":ADJ:SINGULAR", ":NOUN:SINGULAR", ":VERB:SINGULAR,", ":NOUN:PLURAL", ":VERB:PLURAL", "in", "the", "background."}
     );
+
+    public Generator() {
+        // Default output path for generated sentences
+        this.outputPath = "src/main/resources/generated_sentences.txt";
+    }
+
+    public Generator(String outputPath) {
+        // Constructor that allows setting a custom output path, for testing purposes
+        this.outputPath = outputPath;
+    }
 
     public String generate(int templateIndex, Dictionary dictionary){
         if(templateIndex == 0){ // It means the user wants a random template
-            templateIndex = (int) (Math.random() * templates.size()) + 1; // +1 to shift the range to [1, size]
+            templateIndex = (int) (Math.random() * templates.size()) + 1; // +1 to shift the range to [1, size], because 0 means random
         }
 
         String[] chosenTemplate = templates.get(templateIndex - 1); // -1 because the list is 0-indexed
@@ -28,9 +41,9 @@ public class Generator {
                 String tag = parts[1];
                 String number = parts[2];
 
-
                 Word word;
-                if(!inputUsed){ // Try to take a word from the temporary set first
+                if(!inputUsed){ //If the program has not used the input yet
+                    // Try to take a word from the temporary set first
                     word = dictionary.takeFromTemporary(tag, number);
                     if(word != null){
                         inputUsed = true;
@@ -51,12 +64,12 @@ public class Generator {
                 generatedSentence.append(token).append(" ");
             }
         }
-        dictionary.saveToFile("src/main/resources/dictionary.json"); // Save the dictionary to a file after generation
+        
         dictionary.clearTemporaryWords(); // Clear temporary words after generation
 
         try {
             // True to append to the file and not to overwrite
-            FileWriter writer = new FileWriter("src/main/resources/generated_sentences.txt", true);
+            FileWriter writer = new FileWriter(outputPath, true);
             writer.write(generatedSentence.toString().trim() + "\n");
             writer.close();
         } catch (IOException e) {
