@@ -16,7 +16,7 @@ public class DictionaryTest {
         dictionary.add(new Word("NOUN", "Cats", "PLURAL", 2));
         dictionary.add(new Word("VERB", "runs", "SINGULAR", 3));
         dictionary.add(new Word("VERB", "fly", "PLURAL", 4));
-        dictionary.add(new Word("ADJ", "blue", "SINGULAR", 5)); // number ignored
+        dictionary.add(new Word("ADJ", "blue", "SINGULAR", 5)); // Adjective number will be ignored
 
         assertEquals("Dog", dictionary.takeWord("NOUN", "SINGULAR").getContent());
         assertEquals("Cats", dictionary.takeWord("NOUN", "PLURAL").getContent());
@@ -61,7 +61,7 @@ public class DictionaryTest {
         dictionary.add(w1);
         dictionary.add(w2);
 
-        Set<String> uniqueContents = new HashSet<>();
+        Set<String> uniqueContents = new HashSet<>(); // HashSet to ensure uniqueness of the elements
         for (int i = 0; i < 10; i++) {
             Word w = dictionary.takeWord("NOUN", "SINGULAR");
             if (w != null) uniqueContents.add(w.getContent());
@@ -86,6 +86,6 @@ public class DictionaryTest {
         assertNotNull(loaded.takeWord("VERB", "PLURAL"));
         assertNotNull(loaded.takeWord("ADJ", "SINGULAR"));
 
-        new File(path).delete(); // pulizia
+        new File(path).delete(); // Clean up the test file after the test
     }
 }

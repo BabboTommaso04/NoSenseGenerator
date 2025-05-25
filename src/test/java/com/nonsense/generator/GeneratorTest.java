@@ -19,6 +19,7 @@ public class GeneratorTest {
         dictionary.add(new Word("ADJ", "quiet", "SINGULAR", 4));
         dictionary.add(new Word("VERB", "chase", "PLURAL", 5));
 
+        // Using the generator constuctor with a file path, only for testing purposes
         Generator generator = new Generator("src/test/java/com/nonsense/generator/resources/test_generated_sentences.txt");
         String sentence = generator.generate(1, dictionary);
 
