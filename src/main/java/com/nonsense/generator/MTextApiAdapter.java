@@ -8,13 +8,14 @@ import java.io.IOException;
 
 public class MTextApiAdapter implements ToxicAnalyzer {
 
-    String currentSentence = null;
-    float[] conf = new float[ClassificationCategoryName.values().length];
+    private String currentSentence = null;
+    private float[] conf = new float[ClassificationCategoryName.values().length];
 
     @Override
     public float getCategoryConfidence(String sentence, ClassificationCategoryName category)  throws IOException {
 
         Objects.requireNonNull(sentence, "sentence must be not null");
+        Objects.requireNonNull(category, "category must be not null");
 
         int index = category.ordinal();
 
@@ -37,18 +38,4 @@ public class MTextApiAdapter implements ToxicAnalyzer {
 
         return conf[index];
     }
-
-    /*
-      public static void main(String[] args) throws IOException {
-        System.out.println("Hello World!");
-
-        for (ClassificationCategoryName n : ClassificationCategoryName.values())
-            System.out.println(n);
-
-        ToxicAnalyzer ta = new ToxicAnalyzer();
-        System.out.println("toxicity: " + ta.getCategoryConfidence("atto! sesso!", ClassificationCategoryName.LEGAL));
-        for(int i = 0; i < ta.conf.length; i++) System.out.println(ta.conf[i]);
-        System.out.println("toxicity: " + ta.getCategoryConfidence("atto! sesso!", ClassificationCategoryName.TOXIC));
-        }
-    */
 }

@@ -66,7 +66,7 @@
               <artifactId>exec-maven-plugin</artifactId>
               <version>3.5.0</version>
               <configuration>
-                <!-- <mainClass>/com.nonsense.generator.Main</mainClass> -->
+                 <mainClass>/com.nonsense.generator.Main</mainClass> 
                 <arguments>
                   <argument>argument1</argument>
                 </arguments>
