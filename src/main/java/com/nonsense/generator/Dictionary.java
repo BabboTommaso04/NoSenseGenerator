@@ -35,7 +35,7 @@ public class Dictionary {
                     pluralVerbs.add(word);
                 }
                 break;
-            case "ADJ":
+            case "ADJ": // Handles both ADJ and ADJECTIVE tags, depending on what the API version calls them
             case "ADJECTIVE":
                 adjectives.add(word);
                 break;
@@ -80,13 +80,14 @@ public class Dictionary {
         return null;  // Needed for compiler
     }
 
-    // Clears the temporary words set
+    // Clears the temporary words set after each sentence generation
+
     public void clearTemporaryWords() {
         temporaryWords.clear();
     }
 
     public Word takeFromTemporary(String tag, String number) {
-        // Ignores the number for adjectives
+        // Ignores the number for adjectives since they are not categorized by number
         List<Word> filtered = temporaryWords.stream()
             .filter(w -> w.getTag().equals(tag) &&
                 (tag.equals("ADJ") || tag.equals("ADJECTIVE") || w.getNumber().equals(number)))

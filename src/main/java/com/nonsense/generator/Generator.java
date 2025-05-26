@@ -37,12 +37,14 @@ public class Generator {
 
         for(String token : chosenTemplate){
             if(token.startsWith(":")){
+                // Split the token to get the tag and number
+                // Example token: ":NOUN:SINGULAR"
                 String[] parts = token.split(":");
                 String tag = parts[1];
                 String number = parts[2];
 
                 Word word;
-                if(!inputUsed){ //If the program has not used the input yet
+                if(!inputUsed){ // If the program has not used the input yet
                     // Try to take a word from the temporary set first
                     word = dictionary.takeFromTemporary(tag, number);
                     if(word != null){
