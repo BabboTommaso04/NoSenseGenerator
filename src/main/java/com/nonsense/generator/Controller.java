@@ -13,7 +13,7 @@ public class Controller {
         this.dictionary = new Dictionary();
         this.generator = new Generator();
         this.sentenceAnalyzer = new SentenceAnalyzer();
-        this.toxicAnalyzer = new ToxicAnalyzer();
+        this.toxicAnalyzer = new MTextApiAdapter();
         
         // Load the dictionary from the file
         dictionary.loadFromFile("src/main/resources/dictionary.json");
@@ -33,8 +33,8 @@ public class Controller {
         this.dictionary.saveToFile("src/main/resources/dictionary.json"); // Saves the dictionary after sentence generation
         
         // Toxicity check
-        float toxicityScore = toxicAnalyzer.getCategoryConfidence(inputText, 0);
-        
+        float toxicityScore = toxicAnalyzer.getCategoryConfidence(inputText, ClassificationCategoryName.TOXIC);
+
         // Output preparation
         StringBuilder result = new StringBuilder();
     
