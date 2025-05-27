@@ -111,6 +111,4 @@
 | Test Passed        | Yes |
 
 
-![Screenshot 2025-05-27 alle 22 52 53](https://github.com/user-attachments/assets/36aaba05-07b8-4ab7-8885-ce5db10beb91)
-
 
