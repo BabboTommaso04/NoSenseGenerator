@@ -109,3 +109,8 @@
 | Post-Conditions    | 1. System return the generated sentence<br>2. The words contained in the input are saved in the dictionary for future phrase generation |
 | Notes              | The words from the input are added to a json file that can be found in the directory: "src/main/resources/dictionary.json". The dictionary doesn't contain duplicates. The words saved in the .json will be used for future phrase generation |
 | Test Passed        | Yes |
+
+
+![Screenshot 2025-05-27 alle 22 52 53](https://github.com/user-attachments/assets/36aaba05-07b8-4ab7-8885-ce5db10beb91)
+
+
