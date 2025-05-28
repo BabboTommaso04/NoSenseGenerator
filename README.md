@@ -1,114 +1,81 @@
-# System test document
+![Schermata da 2025-05-28 09-20-46](https://github.com/user-attachments/assets/0d7edb5a-ddde-4a1e-90cc-53b4633c83a0)# Non Sense Generator Manual
 
-## Acceptance criteria 1
+**Author**: BBC Team
 
-| Acceptance criteria name  |  Basic functionality                |
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user, when I input a phrase, then the system generates another one|
-| Preconditions      |  - |
-| Main Scenario      | 1. User enters a phrase<br>2. User clicks "generate"<br>3. System computes the input |
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    | New phrase is showed to the user  |
-| Notes              | The phrase will be displayd in a new window |
-| Test Passed        | Yes |
+## Introduction
 
+The Non Sense Generator processes input text to create grammatically structured yet absurd sentences. Key features include:
 
-## Acceptance criteria 2
+- Syntax tree visualization using Google Cloud NLP  
+- Template-based sentence generation  
+- Toxicity analysis via machine learning models  
+- Dynamic dictionary expansion from user input
 
-| Acceptance criteria name  |  Show syntactic tree                |
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user and I've already input my phrase, when I choose to see the syntactic tree, then the program provides the sentence structure.|
-| Preconditions      |  User wrote something in the input box and chose to see the syntax tree|
-| Main Scenario      | 1. User enters a phrase<br>2. User clicks "Show syntax tree"<br>4. User clicks "generate"<br>3. System computes the input|
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    |1. New phrase is showed to the user<br>2. Below the generated phrase the user can see the syntax tree  |
-| Notes              | - |
-| Test Passed        | Yes |
+## Technologies Used
 
+| Name                    | Version | Description                        |
+|-------------------------|---------|------------------------------------|
+| Java                    | 17      | Core programming language          |
+| Google Cloud NLP API    | v1      | Syntax analysis and toxicity scoring |
+| Swing                   | N/A     | GUI framework                      |
+| Maven                   | 4.0.0   | Dependency management tool  |
 
+## Project Description and Implementation
 
-## Acceptance criteria 3
+During the initial phases of the project, the requirements were analyzed with the intention of approaching the design and implementation stages in a structured and sequential manner.  
+Once the analysis and design phases were completed (the related documents are provided in the following sections), the development of the application began.  
+The main idea underlying the implementation of the software's features was to use an easy interface to visualize a generated sentence, toxicity, and syntax tree.
 
-| Acceptance criteria name  |  Input word found in the output|
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user and I've already input my phrase, when the program generates the random sentence, then it must contain terms from the input phrase|
-| Preconditions      |  User wrote something in the input box|
-| Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    |1. New phrase is showed to the user<br>2. The generated sentence contains at least one word from the input  |
-| Notes              | - |
-| Test Passed        | Yes |
+### Graphic Interface
 
+The interface is composed of some buttons and text boxes where a sentence is inserted and where the generated sentence and the syntax tree are displayed..
 
+## API Integration
 
+### Google Cloud Natural Language API
 
-## Acceptance criteria 4
+| Function            | Implementation |
+|---------------------|----------------|
+| **Syntax Analysis** | Used in `SentenceAnalyzer` for:  
+  - Input text tokenization  
+  - Part-of-Speech (POS) tagging  
+  - Dependency tree construction  
+  - Grammatical relationship extraction |
+| **Content Moderation** | Implemented in `ToxicAnalyzer` for:  
+  - Toxicity score calculation (0-1)  
+  - Inappropriate language detection |
 
-| Acceptance criteria name  |  Output contains words from a dictionary |
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user and I already input my phrase, when the program generates the random sentence, then it must contain not only terms from the input phrase, but also terms from a built-in dictionary.|
-| Preconditions      |  User wrote something in the input box |
-| Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    |1. New phrase is showed to the user<br>2. The generated sentence contains at least one word from the input and also words from an internal dictionary  |
-| Notes              | The words taken from the dictionary are randomly chosen |
-| Test Passed        | Yes |
+## Library
 
-## Acceptance criteria 5
+### Gson
 
-| Acceptance criteria name  |  Show toxicity |
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user and I've already input my phrase, when the program generates the random sentence, then it must also provide the probability that the random phrase is toxic|
-| Preconditions      |  User wrote something in the input box |
-| Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    | 1. System return the generated sentence<br>2. System returns the toxicity of the generated sentence |
-| Notes              | The displayed number indicates the probability that the generated sentence is toxic |
-| Test Passed        | Yes |
+| Usage              | Description |
+|--------------------|-------------|
+| **Dictionary Persistence** | Serializes/deserializes:  
+  - `Word` object sets  
+  - Complex data structures  
+  - Custom annotations |
+| **Configuration** | Customized via:  
+  - `TypeToken` for generic types  
+  - Field exclusion policies  
+  - Formatting adapters |
+| **Performance** | Optimizations:  
+  - Type adapter caching  
+  - Lazy parsing  
+  - JSON streaming |
 
-## Acceptance criteria 6
+## Technical Notes
 
-| Acceptance criteria name  |  Sentence bucket |
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user and I've already received the generated phrase from the program, then that phrase must be saved in a file|
-| Preconditions      |  User wrote something in the input box |
-| Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    | 1. System return the generated sentence<br>2. System returns the toxicity of the generated sentence<br>3. The generated sentence is saved in a .txt file |
-| Notes              | The .txt file can be found in the directory: "src/main/resources/generated_sentences.txt" |
-| Test Passed        | Yes |
+### Dictionary Management
 
-## Acceptance criteria 7
+- Words are categorized by POS tag and number (singular/plural)  
+- Temporary words from user input prioritized in generation  
+- JSON structure:
 
-| Acceptance criteria name  |  Template selection |
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user and I've started the program, when I select a template from the list of templates, then the output phrase must follow that template|
-| Preconditions      |  User wrote something in the input box |
-| Main Scenario      | 1. User enters a phrase<br>2. User clicks on the drop down menu containing the templates<br>3. User chooses a template <br>4. User clicks "generate" |
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    | 1. System return the generated sentence<br>2. System returns the toxicity of the generated sentence<br>3. The generated sentence follows the specified template |
-| Notes              | - |
-| Test Passed        | Yes |
-
-## Acceptance criteria 8
-
-| Acceptance criteria name  |  Saving words to dictionary |
-|--------------------|--------------------------|
-| Actors             | User                     |
-| Description        | Given I'm a user and I've already input a phrase, when the program generates the random sentence, then it must also save the words from the input in the dictionary|
-| Preconditions      |  User wrote something in the input box |
-| Main Scenario      | 1. User enters a phrase<br>2. User chooses a template <br>4. User clicks "generate" |
-| Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
-| Post-Conditions    | 1. System return the generated sentence<br>2. The words contained in the input are saved in the dictionary for future phrase generation |
-| Notes              | The words from the input are added to a json file that can be found in the directory: "src/main/resources/dictionary.json". The dictionary doesn't contain duplicates. The words saved in the .json will be used for future phrase generation |
-| Test Passed        | Yes |
-
-
-
+```json
+{
+  "singularNouns": [...],
+  "pluralNouns": [...],
+  "singularVerbs": [...]
+  // etc.
+}
