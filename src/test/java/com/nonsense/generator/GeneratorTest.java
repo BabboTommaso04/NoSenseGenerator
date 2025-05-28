@@ -13,11 +13,11 @@ public class GeneratorTest {
     @Test
     void testGenerateWithInputWordUsed() {
         Dictionary dictionary = new Dictionary();
-        dictionary.add(new Word("NOUN", "Dog", "SINGULAR", 1));
-        dictionary.add(new Word("VERB", "runs", "SINGULAR", 2));
-        dictionary.add(new Word("NOUN", "Cat", "SINGULAR", 3));
-        dictionary.add(new Word("ADJ", "quiet", "SINGULAR", 4));
-        dictionary.add(new Word("VERB", "chase", "PLURAL", 5));
+        dictionary.add("NOUN", "Dog", "SINGULAR");
+        dictionary.add("VERB", "runs", "SINGULAR");
+        dictionary.add("NOUN", "Cat", "SINGULAR");
+        dictionary.add("ADJ", "quiet", "SINGULAR");
+        dictionary.add("VERB", "chase", "PLURAL");
 
         // Using the generator constuctor with a file path, only for testing purposes
         Generator generator = new Generator("src/test/java/com/nonsense/generator/resources/test_generated_sentences.txt");
@@ -29,11 +29,11 @@ public class GeneratorTest {
     @Test
     void testGenerateReturnsNonEmptySentence() {
         Dictionary dictionary = new Dictionary();
-        dictionary.add(new Word("NOUN", "Book", "SINGULAR", 1));
-        dictionary.add(new Word("VERB", "opens", "SINGULAR", 2));
-        dictionary.add(new Word("NOUN", "Shelves", "PLURAL", 3));
-        dictionary.add(new Word("ADJ", "old", "SINGULAR", 4));
-        dictionary.add(new Word("VERB", "fall", "PLURAL", 5));
+        dictionary.add("NOUN", "Book", "SINGULAR");
+        dictionary.add("VERB", "opens", "SINGULAR");
+        dictionary.add("NOUN", "Shelves", "PLURAL");
+        dictionary.add("ADJ", "old", "SINGULAR");
+        dictionary.add("VERB", "fall", "PLURAL");
 
         Generator generator = new Generator("src/test/java/com/nonsense/generator/resources/test_generated_sentences.txt");
         String result = generator.generate(2, dictionary);

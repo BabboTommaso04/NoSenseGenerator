@@ -12,11 +12,11 @@ public class DictionaryTest {
     @Test
     void testAddAndTakeEachCategory() {
         Dictionary dictionary = new Dictionary();
-        dictionary.add(new Word("NOUN", "Dog", "SINGULAR", 1));
-        dictionary.add(new Word("NOUN", "Cats", "PLURAL", 2));
-        dictionary.add(new Word("VERB", "runs", "SINGULAR", 3));
-        dictionary.add(new Word("VERB", "fly", "PLURAL", 4));
-        dictionary.add(new Word("ADJ", "blue", "SINGULAR", 5)); // Adjective number will be ignored
+        dictionary.add("NOUN", "Dog", "SINGULAR");
+        dictionary.add("NOUN", "Cats", "PLURAL");
+        dictionary.add("VERB", "runs", "SINGULAR");
+        dictionary.add("VERB", "fly", "PLURAL");
+        dictionary.add("ADJ", "blue", "SINGULAR"); // Adjective number will be ignored
 
         assertEquals("Dog", dictionary.takeWord("NOUN", "SINGULAR").getContent());
         assertEquals("Cats", dictionary.takeWord("NOUN", "PLURAL").getContent());
@@ -36,8 +36,7 @@ public class DictionaryTest {
     @Test
     void testTakeFromTemporary() {
         Dictionary dictionary = new Dictionary();
-        Word w = new Word("VERB", "dance", "SINGULAR", 1);
-        dictionary.add(w);
+        dictionary.add("VERB", "dance", "SINGULAR");
 
         Word temp = dictionary.takeFromTemporary("VERB", "SINGULAR");
         assertNotNull(temp);
@@ -47,7 +46,7 @@ public class DictionaryTest {
     @Test
     void testClearTemporaryWords() {
         Dictionary dictionary = new Dictionary();
-        dictionary.add(new Word("NOUN", "banana", "SINGULAR", 1));
+        dictionary.add("NOUN", "banana", "SINGULAR");
         assertNotNull(dictionary.takeFromTemporary("NOUN", "SINGULAR"));
         dictionary.clearTemporaryWords();
         assertNull(dictionary.takeFromTemporary("NOUN", "SINGULAR"));
@@ -56,10 +55,8 @@ public class DictionaryTest {
     @Test
     void testNoDuplicatesInSets() {
         Dictionary dictionary = new Dictionary();
-        Word w1 = new Word("NOUN", "Table", "SINGULAR", 1);
-        Word w2 = new Word("NOUN", "Table", "SINGULAR", 1);
-        dictionary.add(w1);
-        dictionary.add(w2);
+        dictionary.add("NOUN", "Table", "SINGULAR");
+        dictionary.add("NOUN", "Table", "SINGULAR");
 
         Set<String> uniqueContents = new HashSet<>(); // HashSet to ensure uniqueness of the elements
         for (int i = 0; i < 10; i++) {
@@ -72,9 +69,9 @@ public class DictionaryTest {
     @Test
     void testSaveAndLoadDictionary() {
         Dictionary original = new Dictionary();
-        original.add(new Word("NOUN", "Laptop", "SINGULAR", 1));
-        original.add(new Word("VERB", "compute", "PLURAL", 2));
-        original.add(new Word("ADJ", "smart", "SINGULAR", 3));
+        original.add("NOUN", "Laptop", "SINGULAR");
+        original.add("VERB", "compute", "PLURAL");
+        original.add("ADJ", "smart", "SINGULAR");
 
         String path = "src/test/java/com/nonsense/generator/test_dictionary.json";
         original.saveToFile(path);  

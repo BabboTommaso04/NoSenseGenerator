@@ -16,10 +16,9 @@ public class Dictionary {
     private Random random = new Random();
 
     // Adds a word to the dictionary based on its tag and number
-    public void add(Word word) {
-        String tag = word.getTag();
-        String number = word.getNumber();
-
+    public void add(String tag, String content, String number) {
+        Word word = new Word(tag, content, number); // Create a new Word object with the provided content, tag, and number
+        
         switch (tag) {
             case "NOUN":
                 if ("SINGULAR".equals(number)) {
@@ -88,7 +87,7 @@ public class Dictionary {
 
     public Word takeFromTemporary(String tag, String number) {
         // Ignores the number for adjectives since they are not categorized by number
-        List<Word> filtered = temporaryWords.stream()
+        List<Word> filtered = temporaryWords.stream() // Stream allows to search through the set
             .filter(w -> w.getTag().equals(tag) &&
                 (tag.equals("ADJ") || tag.equals("ADJECTIVE") || w.getNumber().equals(number)))
             .toList();

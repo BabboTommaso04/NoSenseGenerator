@@ -8,9 +8,7 @@ public class Word {
         tag_ = tag;
         content_ = content;
         number_ = number;
-        headTokenIndex_ = 0;
     }
-
 
     // Getter
     public String getTag(){
@@ -29,22 +27,21 @@ public class Word {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Word word = (Word) o; //Casting o to Word
-        return headTokenIndex_ == word.headTokenIndex_ &&
-               Objects.equals(tag_, word.tag_) &&
+        Word word = (Word) o; // Casting o to Word
+        return Objects.equals(tag_, word.tag_) &&
                Objects.equals(content_, word.content_) &&
                Objects.equals(number_, word.number_);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tag_, content_, number_, headTokenIndex_);
+        return Objects.hash(tag_, content_, number_);
     }
 
     // For debugging purposes 
     @Override
     public String toString() {
-        return String.format("Word{tag='%s', content='%s', number='%s', headTokenIndex=%d}", 
-                              tag_, content_, number_, headTokenIndex_);
+        return String.format("Word{tag='%s', content='%s', number='%s'", 
+                              tag_, content_, number_);
     }
 }
