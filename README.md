@@ -18,7 +18,8 @@ The Non Sense Generator processes input text to create grammatically structured 
 | Java                    | 17      | Core programming language          |
 | Google Cloud NLP API    | v1      | Syntax analysis and toxicity scoring |
 | Swing                   | N/A     | GUI framework                      |
-| Maven                   | 4.0.0   | Dependency management tool  |
+| Maven                   | 4.0.0   | Dependency management and building tool         |
+| JUnit                   | 5.0     | Testing                            |
 
 ## Project Description and Implementation
 
