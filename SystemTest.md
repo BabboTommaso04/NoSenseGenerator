@@ -7,7 +7,7 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user, when I input a phrase, then the system generates another one|
-| Preconditions      |  - |
+| Preconditions      |  User wrote something in the input box and clicked "Generate" |
 | Main Scenario      | 1. User enters a phrase<br>2. User clicks "generate"<br>3. System computes the input |
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    | New phrase is showed to the user  |
@@ -21,7 +21,7 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user and I've already input my phrase, when I choose to see the syntactic tree, then the program provides the sentence structure.|
-| Preconditions      |  User wrote something in the input box and chose to see the syntax tree|
+| Preconditions      |  User wrote something in the input box, chose to see the syntax tree and clicked "Generate"|
 | Main Scenario      | 1. User enters a phrase<br>2. User clicks "Show syntax tree"<br>4. User clicks "generate"<br>3. System computes the input|
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    |1. New phrase is showed to the user<br>2. Below the generated phrase the user can see the syntax tree  |
@@ -36,11 +36,11 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user and I've already input my phrase, when the program generates the random sentence, then it must contain terms from the input phrase|
-| Preconditions      |  User wrote something in the input box|
+| Preconditions      |  User wrote something in the input box and clicked "Generate"|
 | Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    |1. New phrase is showed to the user<br>2. The generated sentence contains at least one word from the input  |
-| Notes              | - |
+| Notes              | The generated sentence will contain a word from the input only if the input has at least one word needed to fill the template |
 | Test Passed        | Yes |
 
 
@@ -52,7 +52,7 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user and I already input my phrase, when the program generates the random sentence, then it must contain not only terms from the input phrase, but also terms from a built-in dictionary.|
-| Preconditions      |  User wrote something in the input box |
+| Preconditions      |  User wrote something in the input box and clicked "Generate" |
 | Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    |1. New phrase is showed to the user<br>2. The generated sentence contains at least one word from the input and also words from an internal dictionary  |
@@ -65,7 +65,7 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user and I've already input my phrase, when the program generates the random sentence, then it must also provide the probability that the random phrase is toxic|
-| Preconditions      |  User wrote something in the input box |
+| Preconditions      |  User wrote something in the input box and clicked "Generate" |
 | Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    | 1. System return the generated sentence<br>2. System returns the toxicity of the generated sentence |
@@ -78,7 +78,7 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user and I've already received the generated phrase from the program, then that phrase must be saved in a file|
-| Preconditions      |  User wrote something in the input box |
+| Preconditions      |  User wrote something in the input box and clicked "Generate" |
 | Main Scenario      | 1. User enters a phrase and clicks "generate"<br>2. System elaborates the input |
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    | 1. System return the generated sentence<br>2. System returns the toxicity of the generated sentence<br>3. The generated sentence is saved in a .txt file |
@@ -91,7 +91,7 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user and I've started the program, when I select a template from the list of templates, then the output phrase must follow that template|
-| Preconditions      |  User wrote something in the input box |
+| Preconditions      |  User wrote something in the input box and clicked "Generate" |
 | Main Scenario      | 1. User enters a phrase<br>2. User clicks on the drop down menu containing the templates<br>3. User chooses a template <br>4. User clicks "generate" |
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    | 1. System return the generated sentence<br>2. System returns the toxicity of the generated sentence<br>3. The generated sentence follows the specified template |
@@ -104,13 +104,9 @@
 |--------------------|--------------------------|
 | Actors             | User                     |
 | Description        | Given I'm a user and I've already input a phrase, when the program generates the random sentence, then it must also save the words from the input in the dictionary|
-| Preconditions      |  User wrote something in the input box |
+| Preconditions      |  User wrote something in the input box and clicked "Generate"|
 | Main Scenario      | 1. User enters a phrase<br>2. User chooses a template <br>4. User clicks "generate" |
 | Alternative Scenario| 1. Empty imput<br>2. System asks to write a phrase in the box |
 | Post-Conditions    | 1. System return the generated sentence<br>2. The words contained in the input are saved in the dictionary for future phrase generation |
 | Notes              | The words from the input are added to a json file that can be found in the directory: "src/main/resources/dictionary.json". The dictionary doesn't contain duplicates. The words saved in the .json will be used for future phrase generation |
 | Test Passed        | Yes |
-
-
-
-
