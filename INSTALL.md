@@ -11,13 +11,9 @@
 ### Guide
 
 1. git clone https://github.com/BabboTommaso04/NoSenseGenerator.git
-2. export GOOGLE_APPLICATION_CREDENTIALS="INSERT API .JSON DIRECTORY”
-(Tip: after writing the “=“ sign drag and drop the .json file on the terminal window to insert the path)
-3.mvn clean package
-4.java -jar target/NoSenseGenerator-1.0-SNAPSHOT.jar
-
-
-
+2.  export GOOGLE_APPLICATION_CREDENTIALS="INSERT API .JSON DIRECTORY”(Tip: after writing the “=“ sign drag and drop the .json file on the terminal window to insert the path)
+3.  mvn clean package
+4.  java -jar target/NoSenseGenerator-1.0-SNAPSHOT.jar
 
 How to get the .json api file:
 
