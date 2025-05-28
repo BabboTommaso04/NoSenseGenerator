@@ -1,4 +1,4 @@
-![Schermata da 2025-05-28 09-20-46](https://github.com/user-attachments/assets/0d7edb5a-ddde-4a1e-90cc-53b4633c83a0)# Non Sense Generator Manual
+# Non Sense Generator Manual
 
 **Author**: BBC Team
 
