@@ -32,7 +32,7 @@
 5. Now you should be redirected to the home of google cloud 
 6. On the top left you should now see the name of the newly created project
 7. Click on the 3 horizontal bars
-8. ￼![Schermata da 2025-05-28 09-20-46](https://github.com/user-attachments/assets/ff83d6be-b6ba-4b6c-9a04-e8187a92be63)
+8. ![Schermata da 2025-05-28 09-20-46](https://github.com/user-attachments/assets/ff83d6be-b6ba-4b6c-9a04-e8187a92be63)
 9. Go to “IAM & Admin”
 10. Select “service account”
 11. Select “create service account” at the top
@@ -40,9 +40,9 @@
 13. Select a role by choosing: role -> basic -> owner (to grant full access)
 14. Click “continue” and then “done”
 15. On the right, click on the three dots under “Actions” and select “Manage Keys”
-16. ￼![Schermata da 2025-05-28 09-23-51](https://github.com/user-attachments/assets/7de918ea-d5cd-4d67-b2fc-5d1094ebeca8)
+16. ![Schermata da 2025-05-28 09-23-51](https://github.com/user-attachments/assets/7de918ea-d5cd-4d67-b2fc-5d1094ebeca8)
 17. Now click on “Add key” and then “Create a new key”
-18. ￼![image](https://github.com/user-attachments/assets/285d69ee-d33f-4071-bc5f-0506429806b8)
+18. ![image](https://github.com/user-attachments/assets/285d69ee-d33f-4071-bc5f-0506429806b8)
 19. Select the .json format and confirm
 
 Now your Api file will be downloaded
