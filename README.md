@@ -28,7 +28,8 @@ The main idea underlying the implementation of the software's features was to us
 
 ### Graphic Interface
 
-The interface is composed of some buttons and text boxes where a sentence is inserted and where the generated sentence and the syntax tree are displayed..
+The main idea underlying the implementation of the software's features was to use a easy interface for visualize a generated sentence, toxicity and syntax tree
+The interface is composed of some buttons and text boxes where a sentence is inserted and where the generated sentence and the syntax tree are displayed.
 
 ## API Integration
 
@@ -36,14 +37,14 @@ The interface is composed of some buttons and text boxes where a sentence is ins
 
 | Function            | Implementation |
 |---------------------|----------------|
-| **Syntax Analysis** | Used in `SentenceAnalyzer` for:  
-  - Input text tokenization  
-  - Part-of-Speech (POS) tagging  
-  - Dependency tree construction  
-  - Grammatical relationship extraction |
-| **Content Moderation** | Implemented in `ToxicAnalyzer` for:  
-  - Toxicity score calculation (0-1)  
-  - Inappropriate language detection |
+| **Syntax Analysis** | Used in `SentenceAnalyzer` for:  |
+|| - Input text tokenization | 
+|| - Part-of-Speech (POS) tagging  |
+|| - Dependency tree construction  |
+|| - Grammatical relationship extraction |
+| **Content Moderation** | Implemented in `ToxicAnalyzer` for:  |
+|| - Toxicity score calculation (0-1) |
+|| - Inappropriate language detection |
 
 ## Library
 
@@ -51,31 +52,17 @@ The interface is composed of some buttons and text boxes where a sentence is ins
 
 | Usage              | Description |
 |--------------------|-------------|
-| **Dictionary Persistence** | Serializes/deserializes:  
-  - `Word` object sets  
-  - Complex data structures  
-  - Custom annotations |
-| **Configuration** | Customized via:  
-  - `TypeToken` for generic types  
-  - Field exclusion policies  
-  - Formatting adapters |
-| **Performance** | Optimizations:  
-  - Type adapter caching  
-  - Lazy parsing  
-  - JSON streaming |
+|**Dictionary Persistence**| Serializes/deserializes: | 
+||  - `Map<String, Set<Word>>` structure  |
+||  - `Word` objects inside sets |  
+|| - JSON files for saving/loading state |
+| **Generic Type Handling** | Enabled via:  
+||  - `TypeToken<Map<String, Set<Word>>>`  |
+||  - Runtime retention of type info  |
+||  - Safe deserialization of complex generics |
+| **Integration Simplicity** | Minimal setup: |
+|| - `new Gson()` instance  |
+||  - Standard `toJson()` / `fromJson()` methods  |
+||  - No external config files |
 
-## Technical Notes
 
-### Dictionary Management
-
-- Words are categorized by POS tag and number (singular/plural)  
-- Temporary words from user input prioritized in generation  
-- JSON structure:
-
-```json
-{
-  "singularNouns": [...],
-  "pluralNouns": [...],
-  "singularVerbs": [...]
-  // etc.
-}
