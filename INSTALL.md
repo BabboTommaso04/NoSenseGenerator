@@ -6,7 +6,8 @@
 - Java Runtime Environment (JRE) 17  
 - Google Cloud service account credentials (JSON key)  
 - Internet connection for API calls  
-- Apache Maven 4.0.0  
+- Apache Maven 4.0.0
+- JUnit 5.0
 
 ### Guide
 
