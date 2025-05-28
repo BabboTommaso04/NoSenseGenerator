@@ -22,7 +22,7 @@
    java -jar target/NoSenseGenerator-1.0-SNAPSHOT.jar
    ```
 
-How to get the .json api file:
+### JSON API File
 
 1. Go to https://console.cloud.google.com and log in with you Google account
 2. Click on “Select a project” on the top left of the page
