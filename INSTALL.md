@@ -3,19 +3,35 @@
 
 ### Requirements
 
-- Java Runtime Environment (JRE) 17  
+- Java Runtime Environment (JRE) 17+  
 - Google Cloud service account credentials (JSON key)  
 - Internet connection for API calls  
-- Apache Maven 4.0.0
+- Apache Maven 3.6.0+
 - JUnit 5.0
 
+- Check Apache Maven version
+  ```cmd
+  mvn -version
+  ```
+- Check Java version
+  ```cmd
+  java -version
+  ```
 ### Guide
 
-1. ```cmd
+1.
+  - If you have github:
+  ```cmd
     git clone https://github.com/BabboTommaso04/NoSenseGenerator.git
    ```
-2. Export GOOGLE_APPLICATION_CREDENTIALS="INSERT API .JSON DIRECTORY” 
+  - If you don't have github:
+   download ZIP from the `code` dropdown at https://github.com/BabboTommaso04/NoSenseGenerator.git
+  
+2. ```cmd
+   export GOOGLE_APPLICATION_CREDENTIALS="INSERT API .JSON DIRECTORY”
+   ```
    (Tip: after writing the “=“ sign drag and drop the .json file on the terminal window to insert the path)
+   
 3. ```cmd
    mvn clean package
    ```
@@ -36,7 +52,7 @@
 9. Go to “IAM & Admin”
 10. Select “service account”
 11. Select “create service account” at the top
-12. Give the account a name you like and then click on “create and continue”
+12. Give the acount a name you like and then click on “create and continue”
 13. Select a role by choosing: role -> basic -> owner (to grant full access)
 14. Click “continue” and then “done”
 15. On the right, click on the three dots under “Actions” and select “Manage Keys”
