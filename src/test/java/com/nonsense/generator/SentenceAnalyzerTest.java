@@ -38,7 +38,7 @@ public class SentenceAnalyzerTest {
         """;
 
         assertNotNull(result);
-        assertTrue(result.equals(expectedTree));
+        assertTrue(result.equals(expectedTree)); // verify that the syntax tree was built correctly
         assertTrue(
             result.contains("jumps (ROOT)") && 
             result.contains("fox (NSUBJ)") && 
@@ -50,14 +50,14 @@ public class SentenceAnalyzerTest {
             result.contains("the (DET)") &&
             result.contains("lazy (AMOD)") &&
             result.contains(". (P)")
-        );
+        ); // verify that the analysis is correct
         assertFalse(
             dictionary.takeWord("NOUN", "SINGULAR") == null &&
             dictionary.takeWord("NOUN", "PLURAL") == null && 
             dictionary.takeWord("VERB", "SINGULAR") == null && 
             dictionary.takeWord("VERB", "PLURAL") == null && 
             dictionary.takeWord("ADJ", "SINGULAR") == null, "Dictionary should be populated."
-        );
+        ); // verify that the dictionary is not empty
     }
 
     @Test
@@ -73,8 +73,8 @@ public class SentenceAnalyzerTest {
             dictionary.takeWord("NOUN", "PLURAL") == null && 
             dictionary.takeWord("VERB", "SINGULAR") == null && 
             dictionary.takeWord("VERB", "PLURAL") == null && 
-            dictionary.takeWord("ADJ", "SINGULAR") == null, "Dictionary should contain extracted words."
-        );
+            dictionary.takeWord("ADJ", "SINGULAR") == null, "Dictionary should be populated."
+        );// verify that the dictionary is not empty
     }
 
     @Test
@@ -84,14 +84,14 @@ public class SentenceAnalyzerTest {
 
         String result = analyzer.syntaxAnalyzer(sentence, true, dictionary);
 
-        assertEquals("", result);
+        assertEquals("", result); 
         assertTrue(
             dictionary.takeWord("NOUN", "SINGULAR") == null && 
             dictionary.takeWord("NOUN", "PLURAL") == null && 
             dictionary.takeWord("VERB", "SINGULAR") == null && 
             dictionary.takeWord("VERB", "PLURAL") == null && 
-            dictionary.takeWord("ADJ", "SINGULAR") == null
-        );
+            dictionary.takeWord("ADJ", "SINGULAR") == null, "Dictionary should be empty."
+        ); // verify that the dictionary is empty
     }
 
     @Test
@@ -112,25 +112,25 @@ public class SentenceAnalyzerTest {
             └── . (P)
         """;
 
-        assertNotNull(result);
-        assertTrue(result.equals(expectedTree));
+        assertNotNull(result); 
+        assertTrue(result.equals(expectedTree)); // verify that the syntax trees were built correctly
         assertTrue(
             result.contains("sleeps (ROOT)") && 
             result.contains("cat (NSUBJ)") && 
             result.contains("The (DET)") && 
             result.contains(". (P)")
-        );
+        ); // verify that the analysis is correct
         assertTrue(
             result.contains("play (ROOT)") && 
             result.contains("They (NSUBJ)") && 
             result.contains("outside (ADVMOD)") && 
             result.contains(". (P)")
-        );
+        ); // verify that the analysis is correct
         assertFalse(dictionary.takeWord("NOUN", "SINGULAR") == null && 
             dictionary.takeWord("NOUN", "PLURAL") == null && 
             dictionary.takeWord("VERB", "SINGULAR") == null && 
             dictionary.takeWord("VERB", "PLURAL") == null && 
-            dictionary.takeWord("ADJ", "SINGULAR") == null
-        );
+            dictionary.takeWord("ADJ", "SINGULAR") == null, "Dictionary should be populated."
+        ); // verify that the dictionary is not empty
     }
 }

@@ -3,14 +3,6 @@ import java.util.Objects;
 
 public class Word {
     private String tag_ = "", content_ = "", number_ = "";    //tag = "Noun or Verb or Abjective"; content = "the actual word"; number = "plural or singular" 
-    private int headTokenIndex_ = 0;    //PartOfSpeach useful for syntax tree
-
-    public Word(String tag, String content, String number, int headTokenIndex) {
-        tag_ = tag;
-        content_ = content;
-        number_ = number;
-        headTokenIndex_ = headTokenIndex;
-    }
 
     public Word(String tag, String content, String number) {
         tag_ = tag;
@@ -31,10 +23,6 @@ public class Word {
 
     public String getNumber(){
         return number_;
-    }
-
-    public int getHeadTokenIndex(){
-        return headTokenIndex_;
     }
 
     @Override

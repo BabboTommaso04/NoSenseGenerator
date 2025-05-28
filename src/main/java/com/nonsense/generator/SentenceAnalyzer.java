@@ -13,11 +13,11 @@ public class SentenceAnalyzer {
     }
 
     private List<Token> APIHandler(String inputString) {
-        com.google.cloud.language.v1.Document doc = com.google.cloud.language.v1.Document.newBuilder().setContent(inputString).setType(com.google.cloud.language.v1.Document.Type.PLAIN_TEXT).build(); // costruzione del documento da analizzare
-        AnalyzeSyntaxRequest request = AnalyzeSyntaxRequest.newBuilder().setDocument(doc).setEncodingType(com.google.cloud.language.v1.EncodingType.UTF16).build(); // richiesta di analisi sintattica
+        com.google.cloud.language.v1.Document doc = com.google.cloud.language.v1.Document.newBuilder().setContent(inputString).setType(com.google.cloud.language.v1.Document.Type.PLAIN_TEXT).build(); // building the document to analyze
+        AnalyzeSyntaxRequest request = AnalyzeSyntaxRequest.newBuilder().setDocument(doc).setEncodingType(com.google.cloud.language.v1.EncodingType.UTF16).build(); // SyntaxAnalyze request
             
-        AnalyzeSyntaxResponse response = language.analyzeSyntax(request); // invio della richiesta
-        return response.getTokensList(); // creazione lista dei token;
+        AnalyzeSyntaxResponse response = language.analyzeSyntax(request); // send request
+        return response.getTokensList(); // token list from the API response
     }
 
     public String syntaxAnalyzer(String inputString, boolean showSyntaxTree, Dictionary dictionary) {
@@ -34,7 +34,7 @@ public class SentenceAnalyzer {
             int head = tokens.get(i).getDependencyEdge().getHeadTokenIndex();
             // add() is only for: nouns adjectives and verbs in the third pearson(both singular and plural)
             if((tokens.get(i).getPartOfSpeech().getTag().name().equals("VERB") && tokens.get(i).getPartOfSpeech().getPerson().name().equals("THIRD")) || tokens.get(i).getPartOfSpeech().getTag().name().equals("NOUN") || tokens.get(i).getPartOfSpeech().getTag().name().equals("ADJ")) { 
-                dictionary.add(new Word(tokens.get(i).getPartOfSpeech().getTag().name(), tokens.get(i).getText().getContent().toLowerCase(), tokens.get(i).getPartOfSpeech().getNumber().name(), head)); // aggiunta al dizionario
+                dictionary.add(tokens.get(i).getPartOfSpeech().getTag().name(), tokens.get(i).getText().getContent().toLowerCase(), tokens.get(i).getPartOfSpeech().getNumber().name()); // add to the dictionary
             }
 
             if (head == i) {
