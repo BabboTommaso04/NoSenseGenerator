@@ -41,4 +41,4 @@ The third and last one to show the effect of the third interaction, comunicating
 Description
 
 ### Diagram
-![ClassDiagram](https://github.com/user-attachments/assets/bf20e35d-049d-48c0-ae6e-bf993046367e)
+![ClassDiagram](https://github.com/user-attachments/assets/06a85391-d5eb-43b3-8582-adae6f5ebbd8)
