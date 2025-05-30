@@ -74,3 +74,5 @@ The interface is composed of some buttons and text boxes where a sentence is ins
 
 [System Test Document](/SystemTest.md)
 
+[Junit Report](/junit_report/surefire-report.html)
+
