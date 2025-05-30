@@ -15,7 +15,7 @@ We have created the System Sequence Diagram from User Stories and Domain Model, 
 
 
 ## 3. Internal System Sequence Diagram
-We have decided to do 3 internal Sequence diagram, one for each of the interactions between the user and the system rappresenting the effect that it has on the system.The tree iteractions are:
+We have decided to do 3 internal Sequence diagram, one for each of the interactions between the user and the system rappresenting the effect that it has on the system.The three iteractions are:
 - User select a Tamplate
 - User decide to visualize Syntax Tree
 - User write a sentence
