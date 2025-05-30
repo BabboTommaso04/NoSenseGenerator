@@ -1,10 +1,10 @@
-# Non Sense Generator Manual
+# Nonsense Generator Manual
 
 **Author**: BBC Team
 
 ## Introduction
 
-The Non Sense Generator processes input text to create grammatically structured yet absurd sentences. Key features include:
+The Nonsense Generator processes input text to create grammatically structured yet absurd sentences. Key features include:
 
 - Syntax tree visualization using Google Cloud NLP  
 - Template-based sentence generation  
@@ -66,4 +66,11 @@ The interface is composed of some buttons and text boxes where a sentence is ins
 ||  - Standard `toJson()` / `fromJson()` methods  |
 ||  - No external config files |
 
+ ### For Installation: [Installation Manual](/INSTALL.md)
+
+## Other Deliverables
+
+[Design Document](/DesignDocument.md)
+
+[System Test Document](/SystemTest.md)
 
