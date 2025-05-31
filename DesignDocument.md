@@ -38,7 +38,7 @@ The third and last one to show the effect of the third interaction, comunicating
 
 
 ## 4. Class Diagram
-Description
+
 
 ### Diagram
 ![ClassDiagram](https://github.com/user-attachments/assets/06a85391-d5eb-43b3-8582-adae6f5ebbd8)
