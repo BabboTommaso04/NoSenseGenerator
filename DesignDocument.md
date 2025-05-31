@@ -31,7 +31,7 @@ The second interaction demonstrates how the program comunicates the SentenceAnal
 ![InternalSequenceDiagramSyntaxTree](https://github.com/user-attachments/assets/7e45b549-e7b4-4b0f-9a1f-936f51f7b2af)
 
 ### Diagram Write a Sentence Interaction
-The third and final one illustrates the interaction in which the user provides a sentence to be analyzed, enabling the program to extract relevant words and use them to generate a new sentence;
+The third and final one illustrates the interaction in which the user provides a sentence to be analyzed, enabling the program to extract relevant words and use them to generate a new sentence.
 
 ![InternalSequenceDiagramPhrase](https://github.com/user-attachments/assets/d4f88cb5-4aa2-4f03-a446-98283bfb2d2f)
 
