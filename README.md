@@ -73,3 +73,6 @@ The interface is composed of some buttons and text boxes where a sentence is ins
 [Design Document](/DesignDocument.md)
 
 [System Test Document](/SystemTest.md)
+
+The junit report test in .html format can be found in the folder "junit_report". 
+After cloning the repository and going in to that folder, dobule clicking on the `surefire-report.html` file should redirect you to the site containing all the detailed reports about the tests.
