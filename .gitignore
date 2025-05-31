@@ -2,3 +2,5 @@
 *.class
 *.jar
 target/
+src/test/java/com/nonsense/generator/resources/test_generated_sentences.txt
+src/main/resources/generated_sentences.txt
