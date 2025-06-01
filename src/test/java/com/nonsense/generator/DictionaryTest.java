@@ -18,8 +18,8 @@ public class DictionaryTest {
         dictionary.add("VERB", "fly", "PLURAL");
         dictionary.add("ADJ", "blue", "SINGULAR"); // Adjective number will be ignored
 
-        assertEquals("Dog", dictionary.takeWord("NOUN", "SINGULAR").getContent());
-        assertEquals("Cats", dictionary.takeWord("NOUN", "PLURAL").getContent());
+        assertEquals("dog", dictionary.takeWord("NOUN", "SINGULAR").getContent());
+        assertEquals("cats", dictionary.takeWord("NOUN", "PLURAL").getContent());
         assertEquals("runs", dictionary.takeWord("VERB", "SINGULAR").getContent());
         assertEquals("fly", dictionary.takeWord("VERB", "PLURAL").getContent());
         assertEquals("blue", dictionary.takeWord("ADJ", "PLURAL").getContent());

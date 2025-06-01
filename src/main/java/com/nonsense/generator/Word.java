@@ -5,9 +5,9 @@ public class Word {
     private String tag_ = "", content_ = "", number_ = "";    //tag = "Noun or Verb or Abjective"; content = "the actual word"; number = "plural or singular" 
 
     public Word(String tag, String content, String number) {
-        tag_ = tag;
-        content_ = content;
-        number_ = number;
+        this.tag_ = tag.trim().toUpperCase();
+        this.content_ = content.trim().toLowerCase();
+        this.number_ = number.trim().toUpperCase();
     }
 
     // Getter
